@@ -17,10 +17,9 @@ Ovis-Image
   <a href="https://huggingface.co/AIDC-AI/Ovis-Image-7B"><img src="https://img.shields.io/badge/🤗_Model-AIDC--AI/Ovis-Image-7B-yellow" alt="model"></a>
 </p>
 
-<p align="left">
-Built upon [Ovis-U1](https://github.com/AIDC-AI/Ovis-U1), Ovis-Image is a 7B text-to-image model specifically optimized for high-quality text rendering, designed to operate efficiently under stringent computational
-constraints. 
-</p>
+
+Built upon [Ovis-U1](https://github.com/AIDC-AI/Ovis-U1), Ovis-Image is a 7B text-to-image model specifically optimized for high-quality text rendering, designed to operate efficiently under stringent computational constraints. 
+
 
 <p align="center">
   <img src="docs/imgs/ovis_image_arch.png" width="95%">
