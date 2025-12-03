@@ -46,6 +46,8 @@ Here are some examples demonstrating the capabilities of Ovis-Image.
 
 ## 🚀 News
 
+- [2025/12/3] 🔥 Ovis-Image has been merged into [`diffusers`](https://github.com/huggingface/diffusers/pull/12740)!
+- [2025/12/2] 🔥 Ovis-Image has been merged into [`ComfyUI`](https://github.com/comfyanonymous/ComfyUI/pull/11030)!
 - [2025/11/29] 🔥 Announcing Ovis-Image ([Model](https://huggingface.co/AIDC-AI/Ovis-Image-7B))!
 
 ## 🛠️ Inference
@@ -55,7 +57,8 @@ Here are some examples demonstrating the capabilities of Ovis-Image.
 First, install the `diffusers` library with support for Ovis-Image.
 
 ```bash
-pip install git+https://github.com/DoctorKey/diffusers.git@ovis-image
+# pip install git+https://github.com/DoctorKey/diffusers.git@ovis-image
+pip install git+https://github.com/huggingface/diffusers
 ```
 
 Next, use the `OvisImagePipeline` to generate the image.
