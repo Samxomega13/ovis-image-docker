@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  ovis-image:
+    build: .
+    container_name: ovis-image
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=${GPU_ID:-0}
+      - MODEL_PATH=${MODEL_PATH}
+      - VAE_PATH=${VAE_PATH}
+      - OVIS_PATH=${OVIS_PATH}
+      - PORT=${PORT:-7860}
+      - IDLE_TIMEOUT=${IDLE_TIMEOUT:-300}
+    ports:
+      - "${PORT:-7860}:${PORT:-7860}"
+    volumes:
+      - ./outputs:/app/outputs
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    restart: unless-stopped

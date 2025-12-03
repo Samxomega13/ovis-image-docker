@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "ovis-image": {
+      "command": "python3",
+      "args": ["/home/neo/upload/Ovis-Image/mcp_server.py"],
+      "env": {
+        "API_BASE_URL": "http://localhost:7870"
+      }
+    }
+  }
+}
